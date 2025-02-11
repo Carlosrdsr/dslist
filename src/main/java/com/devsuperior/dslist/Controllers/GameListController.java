@@ -16,8 +16,12 @@ import com.devsuperior.dslist.dto.ReplacementDTO;
 import com.devsuperior.dslist.services.GameListService;
 import com.devsuperior.dslist.services.GameService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping(value = "/lists")
+@Tag(name = "Lista de Games")
 public class GameListController {
 	
 	@Autowired
@@ -27,6 +31,7 @@ public class GameListController {
 	private GameService gameService;
 	
 	@GetMapping
+	@Operation(summary = "Obter Game", description = "Busca Games por Id")
 	public List<GameListDTO> findAll(){
 		List<GameListDTO> result = gameListService.findAll();
 		return result;
